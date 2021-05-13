@@ -13,7 +13,6 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.alert import Alert
-from bs4 import BeautifulSoup as bs
 
 def AutoLMS(iD, passWord, classNames):
     driver = webdriver.Chrome('./chromedriver')
@@ -88,5 +87,7 @@ def AutoLMS(iD, passWord, classNames):
                     time.sleep(2)
                     driver.switch_to_window(driver.window_handles[0])
                     print("교육 하나 완료")
+        driver.back()
+        time.sleep(2)
 
 AutoLMS('20215349', 'gjals9wkd!3', ['폭력예방', '안전교육'])
