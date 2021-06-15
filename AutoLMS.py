@@ -70,11 +70,17 @@ def AutoLMS(iD, passWord, classNames):
                         vodClick = vod.find_elements_by_css_selector("img.activityicon")
                         playTime = vod.find_elements_by_css_selector("span.text-info")
                         if len(playTime) > 0:
-                            if len(playTime[0].text) > 5:
+                            x = time.time()
+                            if len(playTime[0].text) > 7:
                                 playTime = playTime[0].text.split(', ')[1]
+                                x = time.strptime(playTime,'%H:%M:%S')
+                            elif len(playTime[0].text) > 5:
+                                playTime = playTime[0].text.split(', ')[1]
+                                x = time.strptime(playTime,'%M:%S')
                             else:
                                 playTime = playTime[0].text
-                            x = time.strptime(playTime,'%M:%S')
+                                x = time.strptime(playTime,'%M:%S')
+                            
                             wait = datetime.timedelta(hours=x.tm_hour,minutes=x.tm_min,seconds=x.tm_sec).total_seconds()
                             wait += 10
 
